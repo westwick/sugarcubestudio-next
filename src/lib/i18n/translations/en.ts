@@ -5,7 +5,7 @@ const en: Translations = {
   siteName: "Sugar Cube Studio",
   tagline: "Innovations driven by imagination",
   comingSoon: "Coming Soon",
-  available: "Available",
+  available: "Available Now",
   learnMore: "Learn more",
   subscribe: "Subscribe",
   

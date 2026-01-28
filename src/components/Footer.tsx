@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn } from "./animations";
-import ThemeControl from "./ThemeControl";
+import ThemeControl from "@/components/ThemeControl";
 import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
@@ -125,7 +125,7 @@ export default function Footer() {
                   href="/apps/simurgh"
                   className="group flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                 >
-                  <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
                   {t.simurghTitle}
                   <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400">
                     {t.available}
@@ -137,7 +137,7 @@ export default function Footer() {
                   href="/apps/nowruz"
                   className="group flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                 >
-                  <span className="w-2 h-2 rounded-full bg-green-500/50 group-hover:bg-green-500 transition-colors" />
+                  <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
                   {t.nowruzTitle}
                   <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400">
                     {t.available}

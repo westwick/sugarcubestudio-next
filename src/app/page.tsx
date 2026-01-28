@@ -3,6 +3,7 @@
 import Button from "@/components/Button";
 import NewsCard from "@/components/NewsCard";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/animations";
 import { useLanguage } from "@/lib/i18n";
@@ -34,8 +35,8 @@ export default function Home() {
           }}
         />
 
-        <div className="relative container mx-auto px-6 py-24">
-          <div className="max-w-4xl">
+        <div className={`relative container mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${isRTL ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""}`}>
+          <div className="max-w-xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,7 +71,7 @@ export default function Home() {
             </motion.p>
 
             <motion.div
-              className={`flex flex-wrap gap-4 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}
+              className={`flex flex-wrap gap-4 ${isRTL ? "flex-row-reverse justify-end" : ""}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -79,7 +80,7 @@ export default function Home() {
                 href="/apps/simurgh"
                 size="lg"
                 icon={
-                  <svg className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className={`w-5 h-5 ${isRTL ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 }
@@ -88,6 +89,23 @@ export default function Home() {
               </Button>
             </motion.div>
           </div>
+
+          {/* Bird artwork: fills right on desktop, compact accent on mobile */}
+          <motion.div
+            className="relative w-full h-56 sm:h-72 lg:h-[75vh] lg:min-h-[420px]"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <Image
+              src="/bird.png"
+              alt=""
+              fill
+              className="object-contain object-center lg:object-right"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
