@@ -35,8 +35,27 @@ export default function Home() {
           }}
         />
 
-        <div className={`relative container mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${isRTL ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""}`}>
-          <div className="max-w-xl">
+        {/* Mobile: bird in background, right side — padding-right on copy so it peeks through, text overlaps slightly */}
+        <div className="absolute inset-0 pointer-events-none lg:hidden">
+          <motion.div
+            className={`absolute top-[10%] w-[78vw] max-w-sm h-[70vh] ${isRTL ? "left-[-144px]" : "right-[-144px]"}`}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <Image
+              src="/bird.png"
+              alt=""
+              fill
+              className={`object-contain ${isRTL ? "object-left -scale-x-100" : "object-right"}`}
+              sizes="78vw"
+              priority
+            />
+          </motion.div>
+        </div>
+
+        <div className={`relative container mx-auto px-6 pt-8 pb-20 sm:pt-10 sm:pb-24 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${isRTL ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""}`}>
+          <div className={`max-w-xl ${isRTL ? "pl-24 sm:pl-32 lg:pl-0" : "pr-24 sm:pr-32 lg:pr-0"}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -90,9 +109,9 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Bird artwork: fills right on desktop, compact accent on mobile */}
+          {/* Bird artwork: desktop only; mobile uses background bird above */}
           <motion.div
-            className="relative w-full h-56 sm:h-72 lg:h-[75vh] lg:min-h-[420px]"
+            className="hidden lg:block relative w-full h-[75vh] min-h-[420px]"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -101,8 +120,8 @@ export default function Home() {
               src="/bird.png"
               alt=""
               fill
-              className="object-contain object-center lg:object-right"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className={`object-contain ${isRTL ? "object-left -scale-x-100" : "object-right"}`}
+              sizes="50vw"
               priority
             />
           </motion.div>
