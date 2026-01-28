@@ -5,11 +5,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, isRTL } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +36,9 @@ export default function Header() {
   };
 
   const navLinks = [
-    { href: "/", label: "Home", exact: true },
-    { href: "/apps", label: "Apps", exact: false },
-    { href: "/contact", label: "Contact", exact: true },
+    { href: "/", label: t.navHome, exact: true },
+    { href: "/apps", label: t.navApps, exact: false },
+    { href: "/contact", label: t.navContact, exact: true },
   ];
 
   return (
@@ -81,13 +84,14 @@ export default function Header() {
                 {link.label}
                 {isActive(link.href, link.exact) && (
                   <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+                    className={`absolute -bottom-1 ${isRTL ? 'right-0' : 'left-0'} right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full`}
                     layoutId="activeNav"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </Link>
             ))}
+            <LanguageToggle />
           </nav>
 
           {/* Mobile menu button */}
@@ -135,7 +139,7 @@ export default function Header() {
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
@@ -152,6 +156,14 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="pt-2 border-t border-border"
+              >
+                <LanguageToggle />
+              </motion.div>
             </nav>
           </motion.div>
         )}

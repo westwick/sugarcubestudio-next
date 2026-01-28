@@ -2,9 +2,11 @@
 
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
 
 export default function ThemeToggle() {
   const { theme, setTheme, resolvedTheme, mounted } = useTheme();
+  const { t } = useLanguage();
 
   const cycleTheme = () => {
     if (theme === "light") {
@@ -69,9 +71,9 @@ export default function ThemeToggle() {
   };
 
   const getLabel = () => {
-    if (theme === "system") return "System";
-    if (theme === "dark") return "Dark";
-    return "Light";
+    if (theme === "system") return t.themeSystem;
+    if (theme === "dark") return t.themeDark;
+    return t.themeLight;
   };
 
   // Don't render anything until mounted to prevent hydration mismatch

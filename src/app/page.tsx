@@ -5,17 +5,20 @@ import NewsCard from "@/components/NewsCard";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/animations";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Home() {
+  const { t, isRTL } = useLanguage();
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className={`absolute top-20 ${isRTL ? 'right-10' : 'left-10'} w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float`} />
           <div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float"
+            className={`absolute bottom-20 ${isRTL ? 'left-10' : 'right-10'} w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float`}
             style={{ animationDelay: "1s" }}
           />
           <div
@@ -43,7 +46,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-sm font-medium text-primary">Coming Soon</span>
+              <span className="text-sm font-medium text-primary">{t.comingSoon}</span>
             </motion.div>
 
             <motion.h1
@@ -52,9 +55,9 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="text-foreground">Experience</span>
+              <span className="text-foreground">{t.heroExperience}</span>
               <br />
-              <span className="gradient-text">Simurgh</span>
+              <span className="gradient-text">{t.heroSimurgh}</span>
             </motion.h1>
 
             <motion.p
@@ -63,13 +66,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              In a game where myth, history, and reality intertwine, step into the
-              role of a fearless woman battling a corrupt status quo for her right
-              to live freely.
+              {t.heroDescription}
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-4"
+              className={`flex flex-wrap gap-4 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -78,15 +79,15 @@ export default function Home() {
                 href="/apps/simurgh"
                 size="lg"
                 icon={
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 }
               >
-                Discover More
+                {t.heroDiscoverMore}
               </Button>
               <Button href="/game-tester" variant="secondary" size="lg">
-                Join Beta Testing
+                {t.heroJoinBeta}
               </Button>
             </motion.div>
           </div>
@@ -115,8 +116,8 @@ export default function Home() {
         <div className="relative container mx-auto px-6 text-center">
           <FadeIn>
             <p className="text-3xl md:text-4xl lg:text-5xl font-light text-muted italic">
-              &ldquo;Innovations driven by{" "}
-              <span className="gradient-text font-medium not-italic">imagination</span>
+              &ldquo;{t.taglineText}{" "}
+              <span className="gradient-text font-medium not-italic">{t.taglineHighlight}</span>
               &rdquo;
             </p>
           </FadeIn>
@@ -127,8 +128,8 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-section-alt relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
+          <div className={`absolute top-0 ${isRTL ? 'right-1/4' : 'left-1/4'} w-96 h-96 bg-primary/5 rounded-full blur-3xl`} />
+          <div className={`absolute bottom-0 ${isRTL ? 'left-1/4' : 'right-1/4'} w-72 h-72 bg-secondary/5 rounded-full blur-3xl`} />
         </div>
 
         <div className="relative container mx-auto px-6">
@@ -137,28 +138,28 @@ export default function Home() {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
-              Exclusive Preview
+              {t.videoExclusivePreview}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Watch the Teaser
+              {t.videoWatchTeaser}
             </h2>
             <p className="text-lg text-muted max-w-2xl mx-auto">
-              Get your first look at Simurgh — an epic journey of courage, rebellion, 
-              and the fight for freedom.
+              {t.videoDescription}
             </p>
           </FadeIn>
 
           <ScaleIn className="max-w-4xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-card">
               {/* Video container with 16:9 aspect ratio */}
-              <div className="relative aspect-video bg-gradient-to-br from-slate-900 to-slate-800">
-                {/* Placeholder for video - replace with actual YouTube embed or video element */}
+              <div className="relative aspect-video bg-section-alt">
+                {/* YouTube embed */}
                 <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                  title="Simurgh Game Teaser"
+                  title={t.videoTitle}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 />
               </div>
               
@@ -166,15 +167,15 @@ export default function Home() {
               <div className="p-4 md:p-6 bg-card border-t border-border">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h3 className="font-bold text-foreground">Simurgh — Official Teaser Trailer</h3>
-                    <p className="text-sm text-muted">Experience the fight for freedom</p>
+                    <h3 className="font-bold text-foreground">{t.videoTitle}</h3>
+                    <p className="text-sm text-muted">{t.videoSubtitle}</p>
                   </div>
                   <div className="flex gap-3">
                     <Button href="/apps/simurgh" size="sm">
-                      Learn More
+                      {t.learnMore}
                     </Button>
                     <Button href="/game-tester" variant="secondary" size="sm">
-                      Join Beta
+                      {t.joinBeta}
                     </Button>
                   </div>
                 </div>
@@ -186,10 +187,10 @@ export default function Home() {
           <FadeIn delay={0.3} className="mt-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
               {[
-                { icon: "🎮", label: "Beat-em-up Action" },
-                { icon: "🎵", label: "Persian Soundtrack" },
-                { icon: "📖", label: "Epic Story" },
-                { icon: "📱", label: "Mobile & Desktop" },
+                { icon: "🎮", label: t.featureBeatEmUp },
+                { icon: "🎵", label: t.featurePersianSoundtrack },
+                { icon: "📖", label: t.featureEpicStory },
+                { icon: "📱", label: t.featureMobileDesktop },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -211,22 +212,22 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <FadeIn className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Stay in the loop
+              {t.newsletterTitle}
             </h2>
             <p className="text-lg text-muted mb-8">
-              Be the first to know when we launch new experiences. No spam, we promise.
+              {t.newsletterDescription}
             </p>
             <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t.newsletterPlaceholder}
                 className="flex-grow px-5 py-4 rounded-xl bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-foreground placeholder:text-muted-foreground"
                 required
               />
-              <Button type="submit">Subscribe</Button>
+              <Button type="submit">{t.subscribe}</Button>
             </form>
             <p className="text-xs text-muted-foreground mt-4">
-              We respect your privacy. Unsubscribe at any time.
+              {t.newsletterPrivacy}
             </p>
           </FadeIn>
         </div>
@@ -237,14 +238,13 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <FadeIn className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-              Our Products
+              {t.appsSubtitle}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Crafted with passion
+              {t.appsTitle}
             </h2>
             <p className="text-lg text-muted max-w-2xl mx-auto">
-              Discover immersive experiences that bring culture, history, and
-              adventure to life through powerful stories and meaningful traditions.
+              {t.appsDescription}
             </p>
           </FadeIn>
 
@@ -252,28 +252,27 @@ export default function Home() {
             <StaggerItem>
               <div className="group relative bg-card rounded-3xl p-8 border border-border overflow-hidden card-hover h-full">
                 {/* Gradient decoration */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500" />
+                <div className={`absolute -top-24 ${isRTL ? '-left-24' : '-right-24'} w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500`} />
                 
                 <div className="relative">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 shadow-lg">
                     <span className="text-3xl">🎮</span>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
-                    <h3 className="text-2xl font-bold text-foreground">Simurgh</h3>
+                    <h3 className="text-2xl font-bold text-foreground">{t.simurghTitle}</h3>
                     <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                      Coming Soon
+                      {t.comingSoon}
                     </span>
                   </div>
                   <p className="text-muted leading-relaxed mb-6">
-                    An epic beat-em-up adventure inspired by Persian mythology.
-                    Fight for freedom in a world where myth meets reality.
+                    {t.simurghShortDesc}
                   </p>
                   <Link
                     href="/apps/simurgh"
-                    className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
+                    className={`inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
-                    Learn more
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    {t.learnMore}
+                    <svg className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -284,28 +283,27 @@ export default function Home() {
             <StaggerItem>
               <div className="group relative bg-card rounded-3xl p-8 border border-border overflow-hidden card-hover h-full">
                 {/* Gradient decoration */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-secondary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500" />
+                <div className={`absolute -top-24 ${isRTL ? '-left-24' : '-right-24'} w-48 h-48 bg-secondary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500`} />
                 
                 <div className="relative">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center mb-6 shadow-lg">
                     <span className="text-3xl">🌸</span>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
-                    <h3 className="text-2xl font-bold text-foreground">Nowruz</h3>
+                    <h3 className="text-2xl font-bold text-foreground">{t.nowruzTitle}</h3>
                     <span className="px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold">
-                      Available
+                      {t.available}
                     </span>
                   </div>
                   <p className="text-muted leading-relaxed mb-6">
-                    Celebrate Persian culture and traditions. Your comprehensive guide
-                    to Nowruz, Yalda Night, and more.
+                    {t.nowruzShortDesc}
                   </p>
                   <Link
                     href="/apps/nowruz"
-                    className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
+                    className={`inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
-                    Learn more
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    {t.learnMore}
+                    <svg className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -316,7 +314,7 @@ export default function Home() {
 
           <FadeIn delay={0.4} className="text-center mt-12">
             <Button href="/apps" variant="secondary">
-              View All Apps
+              {t.viewAllApps}
             </Button>
           </FadeIn>
         </div>
@@ -327,33 +325,33 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <FadeIn className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-              Latest News
+              {t.newsSubtitle}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              What&apos;s happening
+              {t.newsTitle}
             </h2>
           </FadeIn>
 
           <StaggerContainer className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <StaggerItem>
               <NewsCard
-                date="Coming Soon"
-                headline="Simurgh Development Update"
-                text="Progress on our flagship game continues. Stay tuned for beta testing opportunities."
+                date={t.comingSoon}
+                headline={t.newsSimurghHeadline}
+                text={t.newsSimurghText}
               />
             </StaggerItem>
             <StaggerItem>
               <NewsCard
-                date="Available Now"
-                headline="Nowruz App Updated"
-                text="New features and content added for the upcoming Nowruz celebration season."
+                date={t.availableNow}
+                headline={t.newsNowruzHeadline}
+                text={t.newsNowruzText}
               />
             </StaggerItem>
             <StaggerItem>
               <NewsCard
-                date="Join Us"
-                headline="Beta Testers Wanted"
-                text="Help shape the future of Simurgh by joining our exclusive beta testing program."
+                date={t.joinUs}
+                headline={t.newsBetaHeadline}
+                text={t.newsBetaText}
               />
             </StaggerItem>
           </StaggerContainer>
@@ -365,26 +363,25 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-secondary/10 rounded-full blur-3xl" />
+          <div className={`absolute top-1/2 ${isRTL ? 'right-1/4' : 'left-1/4'} w-64 h-64 bg-primary/10 rounded-full blur-3xl`} />
+          <div className={`absolute top-1/2 ${isRTL ? 'left-1/4' : 'right-1/4'} w-48 h-48 bg-secondary/10 rounded-full blur-3xl`} />
         </div>
 
         <div className="relative container mx-auto px-6">
           <ScaleIn className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-              Ready to experience something{" "}
-              <span className="gradient-text">extraordinary</span>?
+              {t.ctaTitle}{" "}
+              <span className="gradient-text">{t.ctaHighlight}</span>?
             </h2>
             <p className="text-lg text-muted mb-8 max-w-xl mx-auto">
-              Join our community and be the first to explore new worlds, celebrate
-              traditions, and create lasting memories.
+              {t.ctaDescription}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button href="/mailing-list" size="lg">
-                Join Our Newsletter
+                {t.ctaNewsletter}
               </Button>
               <Button href="/contact" variant="secondary" size="lg">
-                Get in Touch
+                {t.ctaContact}
               </Button>
             </div>
           </ScaleIn>

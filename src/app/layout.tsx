@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Nunito_Sans, Vazirmatn } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/lib/i18n";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800"],
+  display: "swap",
+});
+
+// Persian font - Vazirmatn is a modern, open-source Persian font
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazirmatn",
+  subsets: ["arabic"],
   weight: ["300", "400", "600", "700", "800"],
   display: "swap",
 });
@@ -27,9 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nunitoSans.variable} suppressHydrationWarning>
+    <html lang="en" className={`${nunitoSans.variable} ${vazirmatn.variable}`} suppressHydrationWarning>
       <head>
-        {/* Prevent flash of wrong theme */}
+        {/* Prevent flash of wrong theme and language direction */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -39,6 +48,12 @@ export default function RootLayout({
                   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                     document.documentElement.classList.add('dark');
                   }
+                  var lang = localStorage.getItem('sugar-cube-language');
+                  if (lang === 'fa') {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.documentElement.setAttribute('lang', 'fa');
+                    document.documentElement.classList.add('rtl');
+                  }
                 } catch (e) {}
               })();
             `,
@@ -47,10 +62,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased min-h-screen flex flex-col bg-background text-foreground">
         <ThemeProvider defaultTheme="system">
-          <ScrollToTop />
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <LanguageProvider>
+            <ScrollToTop />
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

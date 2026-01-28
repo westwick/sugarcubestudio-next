@@ -51,6 +51,7 @@ export default function StaggerContainer({
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
       className={className}
+      style={{ willChange: "opacity" }}
     >
       {children}
     </motion.div>
@@ -66,7 +67,11 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div variants={staggerItemVariants} className={className}>
+    <motion.div 
+      variants={staggerItemVariants} 
+      className={className}
+      style={{ willChange: "opacity, transform" }}
+    >
       {children}
     </motion.div>
   );

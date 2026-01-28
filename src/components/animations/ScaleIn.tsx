@@ -34,6 +34,7 @@ export default function ScaleIn({
         ease: [0.25, 0.1, 0.25, 1],
       }}
       className={className}
+      style={{ willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>

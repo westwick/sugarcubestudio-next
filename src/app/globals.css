@@ -78,6 +78,26 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Prevent black flash during scroll/animation compositing */
+main {
+  background: var(--background);
+}
+
+section {
+  /* Ensure all sections have a background to prevent compositor glitches */
+  background-color: inherit;
+}
+
+/* RTL support - Persian font and direction */
+html.rtl body {
+  font-family: var(--font-vazirmatn), "Vazirmatn", "Tahoma", system-ui, sans-serif;
+}
+
+html[dir="rtl"] {
+  /* Better word spacing for Persian */
+  word-spacing: 0.1em;
+}
+
 /* Prevent flash on page load */
 html.dark {
   color-scheme: dark;
@@ -282,3 +302,84 @@ html.dark {
 .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
 .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* =================================
+   RTL (Right-to-Left) Support
+   ================================= */
+
+/* Flip horizontal transforms and animations for RTL */
+html[dir="rtl"] .translate-x-1\/2 {
+  --tw-translate-x: -50%;
+}
+
+html[dir="rtl"] .-translate-x-1\/2 {
+  --tw-translate-x: 50%;
+}
+
+/* Flip arrow icons in RTL */
+html[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Animated underline for RTL */
+html[dir="rtl"] .link-underline::after {
+  left: auto;
+  right: 0;
+}
+
+/* Flip directional padding/margins for RTL */
+html[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Gradient direction flip for RTL */
+html[dir="rtl"] .gradient-text {
+  background: linear-gradient(225deg, #e11d48 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button icon positioning for RTL */
+html[dir="rtl"] .btn-icon-right {
+  flex-direction: row-reverse;
+}
+
+/* Mobile menu animation direction for RTL */
+html[dir="rtl"] .slide-in-right {
+  animation-name: slide-in-left;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Scrollbar positioning for RTL */
+html[dir="rtl"] {
+  scrollbar-gutter: stable;
+}
+
+/* Fix flex gap items alignment in RTL */
+html[dir="rtl"] .flex-row-reverse-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Better text alignment defaults for RTL */
+html[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+html[dir="rtl"] .text-right {
+  text-align: left;
+}

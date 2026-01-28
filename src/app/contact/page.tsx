@@ -3,14 +3,17 @@
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import { FadeIn } from "@/components/animations";
+import { useLanguage } from "@/lib/i18n";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <PageHeader
-        subtitle="Contact Us"
-        title="Get in touch"
-        description="Have a question or feedback? We'd love to hear from you."
+        subtitle={t.contactPageSubtitle}
+        title={t.contactPageTitle}
+        description={t.contactPageDescription}
       />
       
       <section className="py-16 md:py-24">
@@ -18,13 +21,13 @@ export default function ContactPage() {
           <div className="max-w-xl mx-auto">
             <FadeIn>
               <p className="text-muted text-center mb-8">
-                Fill out the form below and we&apos;ll get back to you as soon as possible.
+                {t.contactFormIntro}
               </p>
               
               <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Name
+                    {t.contactName}
                   </label>
                   <input
                     type="text"
@@ -37,7 +40,7 @@ export default function ContactPage() {
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email
+                    {t.contactEmail}
                   </label>
                   <input
                     type="email"
@@ -50,7 +53,7 @@ export default function ContactPage() {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
+                    {t.contactMessage}
                   </label>
                   <textarea
                     id="message"
@@ -62,7 +65,7 @@ export default function ContactPage() {
                 </div>
                 
                 <Button type="submit" className="w-full">
-                  Send Message
+                  {t.contactSend}
                 </Button>
               </form>
             </FadeIn>

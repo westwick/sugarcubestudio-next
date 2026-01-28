@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
 
 interface AppCardProps {
   title: string;
@@ -21,6 +22,8 @@ export default function AppCard({
   badge,
   badgeColor = "primary",
 }: AppCardProps) {
+  const { t, isRTL } = useLanguage();
+  
   const badgeColors = {
     primary: "bg-primary/10 text-primary",
     green: "bg-green-500/10 text-green-600 dark:text-green-400",
@@ -48,7 +51,7 @@ export default function AppCard({
 
         {/* Badge */}
         {badge && (
-          <div className="absolute top-4 right-4 z-10">
+          <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10`}>
             <span
               className={`px-3 py-1 rounded-full text-xs font-semibold ${badgeColors[badgeColor]}`}
             >
@@ -63,15 +66,15 @@ export default function AppCard({
             {title}
           </h3>
           <p className="text-muted text-sm leading-relaxed mb-4">{description}</p>
-          <div className="flex items-center gap-2 text-primary font-semibold text-sm">
-            <span>Learn more</span>
+          <div className={`flex items-center gap-2 text-primary font-semibold text-sm ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+            <span>{t.learnMore}</span>
             <motion.span
               className="inline-block"
               initial={{ x: 0 }}
-              whileHover={{ x: 4 }}
+              whileHover={{ x: isRTL ? -4 : 4 }}
             >
               <svg
-                className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                className={`w-4 h-4 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

@@ -3,14 +3,17 @@
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import { FadeIn } from "@/components/animations";
+import { useLanguage } from "@/lib/i18n";
 
 export default function MailingListPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <PageHeader
-        subtitle="Newsletter"
-        title="Stay Updated"
-        description="Be the first to know about our latest updates, game releases, and exclusive content."
+        subtitle={t.mailingPageSubtitle}
+        title={t.mailingPageTitle}
+        description={t.mailingPageDescription}
       />
       
       <section className="py-16 md:py-24">
@@ -23,30 +26,29 @@ export default function MailingListPage() {
             </div>
             
             <p className="text-muted mb-8">
-              No spam, unsubscribe anytime. Get exclusive updates on our games and apps.
+              {t.mailingIntro}
             </p>
             
             <form className="space-y-4">
               <div>
-                <label htmlFor="email" className="sr-only">Email</label>
+                <label htmlFor="email" className="sr-only">{t.contactEmail}</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Enter your email"
+                  placeholder={t.newsletterPlaceholder}
                   required
                   className="w-full px-5 py-4 rounded-xl bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-center text-foreground placeholder:text-muted-foreground"
                 />
               </div>
               
               <Button type="submit" className="w-full">
-                Subscribe
+                {t.subscribe}
               </Button>
             </form>
             
             <p className="text-xs text-muted-foreground mt-6">
-              By subscribing, you agree to receive emails from Sugar Cube Studio. 
-              You can unsubscribe at any time.
+              {t.mailingDisclaimer}
             </p>
           </FadeIn>
         </div>

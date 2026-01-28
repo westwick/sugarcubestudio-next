@@ -5,16 +5,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn } from "./animations";
 import ThemeToggle from "./ThemeToggle";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t, isRTL } = useLanguage();
 
   const quickLinks = [
-    { href: "/apps", label: "Our Apps" },
-    { href: "/game-tester", label: "Become a Tester" },
-    { href: "/mailing-list", label: "Newsletter" },
-    { href: "/contact", label: "Contact" },
-    { href: "/privacy-policy", label: "Privacy Policy" },
+    { href: "/apps", label: t.linkOurApps },
+    { href: "/game-tester", label: t.linkBecomeTester },
+    { href: "/mailing-list", label: t.linkNewsletter },
+    { href: "/contact", label: t.linkContact },
+    { href: "/privacy-policy", label: t.linkPrivacyPolicy },
   ];
 
   const socialLinks = [
@@ -63,18 +65,17 @@ export default function Footer() {
               <div className="relative w-10 h-10">
                 <Image
                   src="/images/logo.png"
-                  alt="Sugar Cube Studio"
+                  alt={t.siteName}
                   fill
                   className="object-contain"
                 />
               </div>
               <span className="text-lg font-bold text-foreground">
-                Sugar Cube Studio
+                {t.siteName}
               </span>
             </div>
             <p className="text-sm leading-relaxed text-muted mb-6">
-              Innovations driven by imagination. We create apps and games that
-              celebrate culture, history, and human connection.
+              {t.footerDescription}
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3">
@@ -98,7 +99,7 @@ export default function Footer() {
           {/* Quick Links */}
           <FadeIn direction="up" delay={0.1} className="md:col-span-1">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-              Quick Links
+              {t.footerQuickLinks}
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -117,7 +118,7 @@ export default function Footer() {
           {/* Products */}
           <FadeIn direction="up" delay={0.2} className="md:col-span-1">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-              Our Apps
+              {t.footerOurApps}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -126,9 +127,9 @@ export default function Footer() {
                   className="group flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                 >
                   <span className="w-2 h-2 rounded-full bg-primary/50 group-hover:bg-primary transition-colors" />
-                  Simurgh
+                  {t.simurghTitle}
                   <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                    Coming Soon
+                    {t.comingSoon}
                   </span>
                 </Link>
               </li>
@@ -138,9 +139,9 @@ export default function Footer() {
                   className="group flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                 >
                   <span className="w-2 h-2 rounded-full bg-green-500/50 group-hover:bg-green-500 transition-colors" />
-                  Nowruz
+                  {t.nowruzTitle}
                   <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400">
-                    Available
+                    {t.available}
                   </span>
                 </Link>
               </li>
@@ -150,18 +151,18 @@ export default function Footer() {
           {/* Newsletter */}
           <FadeIn direction="up" delay={0.3} className="md:col-span-1">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-              Stay Updated
+              {t.footerStayUpdated}
             </h3>
             <p className="text-sm text-muted mb-4">
-              Get notified about new releases and updates.
+              {t.footerStayUpdatedDesc}
             </p>
             <Link
               href="/mailing-list"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}
             >
-              Subscribe
+              {t.subscribe}
               <svg
-                className="w-4 h-4"
+                className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -181,22 +182,22 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted">
-              &copy; {currentYear} Sugar Cube Studio. All rights reserved.
+              &copy; {currentYear} {t.footerCopyright}
             </p>
             
             {/* Theme Toggle */}
             <div className="flex items-center gap-4">
               <ThemeToggle />
               <div className="flex items-center gap-1 text-sm text-muted">
-                Made with
+                {t.footerMadeWith}
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
-                  className="text-primary"
+                  className="text-primary mx-1"
                 >
                   ♥
                 </motion.span>
-                for storytellers everywhere
+                {t.footerForStorytellers}
               </div>
             </div>
           </div>
