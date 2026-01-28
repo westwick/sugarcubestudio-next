@@ -64,11 +64,12 @@ export default function RootLayout({
       <body className="font-sans antialiased min-h-screen flex flex-col bg-background text-foreground">
         <ThemeProvider defaultTheme="system">
           <LanguageProvider>
-            <FirefoxMobileFix />
-            <ScrollToTop />
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
+            <FirefoxMobileFix>
+              <ScrollToTop />
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </FirefoxMobileFix>
           </LanguageProvider>
         </ThemeProvider>
       </body>

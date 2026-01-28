@@ -2,6 +2,7 @@
 
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef, ReactNode } from "react";
+import { useIsFirefoxMobile } from "@/components/FirefoxMobileFix";
 
 interface StaggerContainerProps {
   children: ReactNode;
@@ -32,6 +33,12 @@ export default function StaggerContainer({
 }: StaggerContainerProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, amount });
+  const isFirefoxMobile = useIsFirefoxMobile();
+
+  // Skip animations on Firefox Mobile to prevent rendering glitches
+  if (isFirefoxMobile) {
+    return <div className={className}>{children}</div>;
+  }
 
   const variants: Variants = {
     hidden: { opacity: 0 },
@@ -65,6 +72,13 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
+  const isFirefoxMobile = useIsFirefoxMobile();
+
+  // Skip animations on Firefox Mobile
+  if (isFirefoxMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div variants={staggerItemVariants} className={className}>
       {children}
