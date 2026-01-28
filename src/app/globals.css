@@ -1,26 +1,284 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Theme CSS Variables
+ * These are derived from src/lib/theme.ts
+ * Change the primary colors there to update the entire site
+ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary accent colors */
+  --primary: #e11d48;
+  --primary-hover: #be123c;
+  --primary-light: #fecdd3;
+  --primary-ultra-light: #fff1f2;
+  --primary-dark: #9f1239;
+  
+  /* Secondary accent */
+  --secondary: #f97316;
+  --secondary-hover: #ea580c;
+  
+  /* Light mode colors */
+  --background: #fafafa;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --muted: #64748b;
+  --muted-foreground: #94a3b8;
+  --section-alt: #f8fafc;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
+  --gradient-primary-subtle: linear-gradient(135deg, #fff1f2 0%, #ffedd5 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(225, 29, 72, 0.05) 0%, transparent 100%);
+  
+  /* Shadows */
+  --shadow-glow: 0 0 40px -10px rgb(225 29 72 / 0.3);
+  --shadow-glow-lg: 0 0 60px -15px rgb(225 29 72 / 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode */
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-hover: #334155;
+  --border: #334155;
+  --border-light: #1e293b;
+  --muted: #94a3b8;
+  --muted-foreground: #64748b;
+  --section-alt: #1e293b;
+  
+  /* Dark mode gradients */
+  --gradient-primary-subtle: linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(249, 115, 22, 0.1) 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(225, 29, 72, 0.15) 0%, transparent 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  /* Account for sticky header height */
+  scroll-padding-top: 5rem; /* h-20 = 5rem on desktop */
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 4rem; /* h-16 = 4rem on mobile */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Prevent flash on page load */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.dark ::selection {
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--section-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Primary button - gradient accent */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgb(225 29 72 / 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgb(225 29 72 / 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary button - outlined */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--border);
+  color: var(--foreground);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-ultra-light);
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgba(225, 29, 72, 0.1);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient background blob */
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.dark .gradient-blob {
+  opacity: 0.3;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* Animated underline for links */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* Pulse animation for CTAs */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px -5px rgb(225 29 72 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px -5px rgb(225 29 72 / 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
