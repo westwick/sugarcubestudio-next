@@ -69,21 +69,6 @@ html {
   html {
     scroll-padding-top: 4rem; /* h-16 = 4rem on mobile */
   }
-  
-  /* Hide heavy blur decorative elements on mobile to prevent GPU compositing glitches */
-  .blur-3xl {
-    display: none !important;
-  }
-  
-  /* Disable float animation on mobile */
-  .animate-float {
-    animation: none !important;
-  }
-  
-  /* Add containment to sections for better mobile rendering */
-  section {
-    contain: layout paint;
-  }
 }
 
 body {
@@ -91,16 +76,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-nunito-sans), "Nunito Sans", system-ui, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Prevent black flash during scroll/animation compositing */
-main {
-  background: var(--background);
-}
-
-section {
-  /* Ensure all sections have a background to prevent compositor glitches */
-  background-color: inherit;
 }
 
 /* RTL support - Persian font and direction */

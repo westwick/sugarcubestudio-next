@@ -151,15 +151,14 @@ export default function Home() {
           <ScaleIn className="max-w-4xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-card">
               {/* Video container with 16:9 aspect ratio */}
-              <div className="relative aspect-video bg-section-alt">
-                {/* YouTube embed */}
+              <div className="relative aspect-video bg-gradient-to-br from-slate-900 to-slate-800">
+                {/* Placeholder for video - replace with actual YouTube embed or video element */}
                 <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
                   title={t.videoTitle}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  loading="lazy"
                 />
               </div>
               
