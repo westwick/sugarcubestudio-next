@@ -115,6 +115,7 @@ export interface Translations {
   simurghScreenshots: string;
   simurghOriginalMusic: string;
   simurghMusicDescription: string;
+  simurghListenOnSpotify: string;
   simurghFeatures: string;
   simurghFeature1: string;
   simurghFeature2: string;
