@@ -35,6 +35,8 @@ module.exports = {
           foreground: 'var(--muted-foreground)',
         },
         'section-alt': 'var(--section-alt)',
+        header: 'var(--header-bg)',
+        footer: 'var(--footer-bg)',
       },
       fontFamily: {
         sans: ['var(--font-nunito-sans)', 'Nunito Sans', 'system-ui', 'sans-serif'],

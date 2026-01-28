@@ -23,8 +23,8 @@ export default function AppsPage() {
               description={t.simurghLongDesc}
               image="/images/simurgh/2024-10-16-08h22m32s112.png"
               href="/apps/simurgh"
-              badge={t.comingSoon}
-              badgeColor="primary"
+              badge={t.available}
+              badgeColor="green"
             />
             <AppCard
               title={t.nowruzTitle}

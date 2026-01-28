@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn } from "./animations";
-import ThemeToggle from "./ThemeToggle";
+import ThemeControl from "./ThemeControl";
 import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
@@ -13,7 +13,6 @@ export default function Footer() {
 
   const quickLinks = [
     { href: "/apps", label: t.linkOurApps },
-    { href: "/game-tester", label: t.linkBecomeTester },
     { href: "/mailing-list", label: t.linkNewsletter },
     { href: "/contact", label: t.linkContact },
     { href: "/privacy-policy", label: t.linkPrivacyPolicy },
@@ -50,7 +49,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-section-alt border-t border-border">
+    <footer className="relative overflow-hidden bg-footer border-t border-border">
       {/* Decorative gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -126,10 +125,10 @@ export default function Footer() {
                   href="/apps/simurgh"
                   className="group flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                 >
-                  <span className="w-2 h-2 rounded-full bg-primary/50 group-hover:bg-primary transition-colors" />
+                  <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                   {t.simurghTitle}
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                    {t.comingSoon}
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400">
+                    {t.available}
                   </span>
                 </Link>
               </li>
@@ -185,21 +184,8 @@ export default function Footer() {
               &copy; {currentYear} {t.footerCopyright}
             </p>
             
-            {/* Theme Toggle */}
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-              <div className="flex items-center gap-1 text-sm text-muted">
-                {t.footerMadeWith}
-                <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                  className="text-primary mx-1"
-                >
-                  ♥
-                </motion.span>
-                {t.footerForStorytellers}
-              </div>
-            </div>
+            {/* Theme control – combined color picker + light/dark */}
+            <ThemeControl />
           </div>
         </div>
       </div>

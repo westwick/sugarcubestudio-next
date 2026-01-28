@@ -2,9 +2,13 @@
 
 import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
-import Button from "@/components/Button";
+import { motion } from "framer-motion";
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useLanguage } from "@/lib/i18n";
+
+/* TODO: Replace with actual store URLs when available */
+const SIMURGH_IOS_URL = "#";
+const SIMURGH_ANDROID_URL = "#";
 
 const screenshots = [
   "/images/simurgh/2024-10-16-08h22m32s112.png",
@@ -87,18 +91,46 @@ export default function SimurghPage() {
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 shadow-lg">
                     <span className="text-2xl">🎮</span>
                   </div>
-                  <h3 className="font-bold text-xl text-foreground mb-2">{t.simurghAvailability}</h3>
-                  <p className="text-primary font-semibold mb-4">{t.comingSoon}</p>
+                  <h3 className="font-bold text-xl text-foreground mb-2">{t.downloadNow}</h3>
+                  <span className="inline-block px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold mb-4">
+                    {t.available}
+                  </span>
                   <p className="text-sm text-muted mb-6">
-                    {t.simurghNotifyText}
+                    {t.availableOnIosAndroid}
                   </p>
-                  <Button href="/mailing-list" className="w-full">
-                    {t.getNotified}
-                  </Button>
-                  <div className="mt-6 pt-6 border-t border-border">
-                    <p className="text-xs text-muted-foreground text-center">
-                      {t.availableForIosAndroid}
-                    </p>
+                  <div className="space-y-3">
+                    <motion.a
+                      href={SIMURGH_IOS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Image
+                        src="/images/ios-badge.png"
+                        alt="Download on the App Store"
+                        width={180}
+                        height={60}
+                        className="w-full h-auto"
+                      />
+                    </motion.a>
+                    <motion.a
+                      href={SIMURGH_ANDROID_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Image
+                        src="/images/play-badge.png"
+                        alt="Get it on Google Play"
+                        width={180}
+                        height={60}
+                        className="w-full h-auto"
+                      />
+                    </motion.a>
                   </div>
                 </div>
               </ScaleIn>

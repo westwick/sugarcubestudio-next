@@ -85,8 +85,6 @@ const en: Translations = {
   footerStayUpdated: "Stay Updated",
   footerStayUpdatedDesc: "Get notified about new releases and updates.",
   footerCopyright: "Sugar Cube Studio. All rights reserved.",
-  footerMadeWith: "Made with",
-  footerForStorytellers: "for storytellers everywhere",
   linkOurApps: "Our Apps",
   linkBecomeTester: "Become a Tester",
   linkNewsletter: "Newsletter",

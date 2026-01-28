@@ -40,13 +40,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-8"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="text-sm font-medium text-primary">{t.comingSoon}</span>
+              <span className="text-sm font-medium text-green-600 dark:text-green-400">{t.available}</span>
             </motion.div>
 
             <motion.h1
@@ -85,9 +85,6 @@ export default function Home() {
                 }
               >
                 {t.heroDiscoverMore}
-              </Button>
-              <Button href="/game-tester" variant="secondary" size="lg">
-                {t.heroJoinBeta}
               </Button>
             </motion.div>
           </div>
@@ -173,9 +170,6 @@ export default function Home() {
                     <Button href="/apps/simurgh" size="sm">
                       {t.learnMore}
                     </Button>
-                    <Button href="/game-tester" variant="secondary" size="sm">
-                      {t.joinBeta}
-                    </Button>
                   </div>
                 </div>
               </div>
@@ -259,8 +253,8 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2 mb-3">
                     <h3 className="text-2xl font-bold text-foreground">{t.simurghTitle}</h3>
-                    <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                      {t.comingSoon}
+                    <span className="px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold">
+                      {t.available}
                     </span>
                   </div>
                   <p className="text-muted leading-relaxed mb-6">
@@ -334,7 +328,7 @@ export default function Home() {
           <StaggerContainer className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <StaggerItem>
               <NewsCard
-                date={t.comingSoon}
+                date={t.availableNow}
                 headline={t.newsSimurghHeadline}
                 text={t.newsSimurghText}
               />

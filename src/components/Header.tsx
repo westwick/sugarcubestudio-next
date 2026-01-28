@@ -45,8 +45,8 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 border-b ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md border-border shadow-sm"
-          : "bg-card/50 backdrop-blur-sm border-transparent"
+          ? "bg-header/95 backdrop-blur-md border-border shadow-sm"
+          : "bg-header/50 backdrop-blur-sm border-transparent"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -133,7 +133,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-card border-t border-border overflow-hidden"
+            className="md:hidden bg-header border-t border-border overflow-hidden"
           >
             <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link, index) => (

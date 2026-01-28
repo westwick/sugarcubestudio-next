@@ -2,58 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
+/*
  * Theme CSS Variables
- * These are derived from src/lib/theme.ts
- * Change the primary colors there to update the entire site
+ * Defaults (Rose Garden). Full palettes are applied by ColorThemeProvider
+ * and the theme init script from src/lib/colorThemes.ts.
  */
 
 :root {
-  /* Primary accent colors */
   --primary: #e11d48;
   --primary-hover: #be123c;
+  --primary-rgb: 225 29 72;
   --primary-light: #fecdd3;
   --primary-ultra-light: #fff1f2;
   --primary-dark: #9f1239;
-  
-  /* Secondary accent */
   --secondary: #f97316;
   --secondary-hover: #ea580c;
-  
-  /* Light mode colors */
-  --background: #fafafa;
-  --foreground: #0f172a;
+  --background: #fdf2f4;
+  --foreground: #1f0f14;
   --card: #ffffff;
-  --card-hover: #f8fafc;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
-  --muted: #64748b;
-  --muted-foreground: #94a3b8;
-  --section-alt: #f8fafc;
-  
-  /* Gradients */
+  --card-hover: #fff1f3;
+  --border: #f5c6d0;
+  --border-light: #fce7eb;
+  --muted: #9f4d63;
+  --muted-foreground: #c99aa8;
+  --section-alt: #fce7eb;
+  --header-bg: #ffffff;
+  --footer-bg: #fce7eb;
   --gradient-primary: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
-  --gradient-primary-subtle: linear-gradient(135deg, #fff1f2 0%, #ffedd5 100%);
+  --gradient-primary-subtle: linear-gradient(135deg, #fff1f2 0%, #fed7aa 100%);
   --gradient-hero: linear-gradient(180deg, rgba(225, 29, 72, 0.05) 0%, transparent 100%);
-  
-  /* Shadows */
-  --shadow-glow: 0 0 40px -10px rgb(225 29 72 / 0.3);
-  --shadow-glow-lg: 0 0 60px -15px rgb(225 29 72 / 0.4);
+  --shadow-glow: 0 0 40px -10px rgb(var(--primary-rgb) / 0.3);
+  --shadow-glow-lg: 0 0 60px -15px rgb(var(--primary-rgb) / 0.4);
 }
 
-/* Dark mode */
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card: #1e293b;
-  --card-hover: #334155;
-  --border: #334155;
-  --border-light: #1e293b;
-  --muted: #94a3b8;
-  --muted-foreground: #64748b;
-  --section-alt: #1e293b;
-  
-  /* Dark mode gradients */
+  --background: #1a0a0f;
+  --foreground: #fce7eb;
+  --card: #251019;
+  --card-hover: #351524;
+  --border: #4a2030;
+  --border-light: #2d1419;
+  --muted: #d4a5b5;
+  --muted-foreground: #9f4d63;
+  --section-alt: #2d1419;
+  --header-bg: #1f0f14;
+  --footer-bg: #2d1419;
   --gradient-primary-subtle: linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(249, 115, 22, 0.1) 100%);
   --gradient-hero: linear-gradient(180deg, rgba(225, 29, 72, 0.15) 0%, transparent 100%);
 }
@@ -134,12 +127,12 @@ html.dark {
   background: var(--gradient-primary);
   color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px 0 rgb(225 29 72 / 0.25);
+  box-shadow: 0 4px 14px 0 rgb(var(--primary-rgb) / 0.25);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px 0 rgb(225 29 72 / 0.35);
+  box-shadow: 0 6px 20px 0 rgb(var(--primary-rgb) / 0.35);
 }
 
 .btn-primary:active {
@@ -161,7 +154,7 @@ html.dark {
 }
 
 .dark .btn-secondary:hover {
-  background-color: rgba(225, 29, 72, 0.1);
+  background-color: rgb(var(--primary-rgb) / 0.1);
 }
 
 /* Card hover effects */
@@ -239,10 +232,10 @@ html.dark {
 /* Pulse animation for CTAs */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px -5px rgb(225 29 72 / 0.4);
+    box-shadow: 0 0 20px -5px rgb(var(--primary-rgb) / 0.4);
   }
   50% {
-    box-shadow: 0 0 30px -5px rgb(225 29 72 / 0.6);
+    box-shadow: 0 0 30px -5px rgb(var(--primary-rgb) / 0.6);
   }
 }
 
@@ -330,7 +323,7 @@ html[dir="rtl"] .mr-auto {
 
 /* Gradient direction flip for RTL */
 html[dir="rtl"] .gradient-text {
-  background: linear-gradient(225deg, #e11d48 0%, #f97316 100%);
+  background: linear-gradient(225deg, var(--primary) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

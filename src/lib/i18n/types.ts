@@ -87,8 +87,6 @@ export interface Translations {
   footerStayUpdated: string;
   footerStayUpdatedDesc: string;
   footerCopyright: string;
-  footerMadeWith: string;
-  footerForStorytellers: string;
   linkOurApps: string;
   linkBecomeTester: string;
   linkNewsletter: string;

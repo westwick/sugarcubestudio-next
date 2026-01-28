@@ -85,8 +85,6 @@ const fa: Translations = {
   footerStayUpdated: "به‌روز بمانید",
   footerStayUpdatedDesc: "از نسخه‌های جدید و به‌روزرسانی‌ها مطلع شوید.",
   footerCopyright: "استودیو شوگر کیوب. تمام حقوق محفوظ است.",
-  footerMadeWith: "ساخته شده با",
-  footerForStorytellers: "برای داستان‌سرایان همه جا",
   linkOurApps: "اپلیکیشن‌های ما",
   linkBecomeTester: "تستر شوید",
   linkNewsletter: "خبرنامه",
