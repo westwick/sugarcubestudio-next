@@ -54,7 +54,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className={`relative container mx-auto px-6 pt-8 pb-20 sm:pt-10 sm:pb-24 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${isRTL ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""}`}>
+        <div className="relative container mx-auto px-6 pt-8 pb-20 sm:pt-10 sm:pb-24 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className={`max-w-xl ${isRTL ? "pl-24 sm:pl-32 lg:pl-0" : "pr-24 sm:pr-32 lg:pr-0"}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
