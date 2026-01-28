@@ -294,6 +294,19 @@ html.dark {
 .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 
 /* =================================
+   Firefox Mobile Fix
+   Workaround for rendering bug with blur effects during scroll
+   ================================= */
+html.firefox-mobile .blur-3xl {
+  filter: none !important;
+  opacity: 0.5;
+}
+
+html.firefox-mobile .animate-float {
+  animation: none !important;
+}
+
+/* =================================
    RTL (Right-to-Left) Support
    ================================= */
 
