@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, ReactNode } from "react";
-import { useIsFirefoxMobile } from "@/components/FirefoxMobileFix";
 
 interface ScaleInProps {
   children: ReactNode;
@@ -23,12 +22,6 @@ export default function ScaleIn({
 }: ScaleInProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, amount });
-  const isFirefoxMobile = useIsFirefoxMobile();
-
-  // Skip animations on Firefox Mobile to prevent rendering glitches
-  if (isFirefoxMobile) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div

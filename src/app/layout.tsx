@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LanguageProvider } from "@/lib/i18n";
 import ScrollToTop from "@/components/ScrollToTop";
-import FirefoxMobileFix from "@/components/FirefoxMobileFix";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -64,12 +63,10 @@ export default function RootLayout({
       <body className="font-sans antialiased min-h-screen flex flex-col bg-background text-foreground">
         <ThemeProvider defaultTheme="system">
           <LanguageProvider>
-            <FirefoxMobileFix>
-              <ScrollToTop />
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </FirefoxMobileFix>
+            <ScrollToTop />
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
           </LanguageProvider>
         </ThemeProvider>
       </body>
