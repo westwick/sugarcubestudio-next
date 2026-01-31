@@ -4,6 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/animations";
+import ImageCarousel from "@/components/ImageCarousel";
 import LiteYouTubeEmbed from "@/components/LiteYouTubeEmbed";
 import { useLanguage } from "@/lib/i18n";
 
@@ -41,30 +42,17 @@ export default function SimurghPage() {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12">
               <FadeIn direction={isRTL ? "right" : "left"} className="md:col-span-2">
+                <div className="mb-8">
+                  <ImageCarousel
+                    images={screenshots}
+                    altPrefix={`${t.simurghTitle} Screenshot`}
+                    aspectRatio="video"
+                  />
+                </div>
+
                 <p className="text-lg text-muted leading-relaxed mb-8">
                   {t.simurghAboutText}
                 </p>
-
-                <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                  {t.simurghScreenshots}
-                </h2>
-                <div className="grid grid-cols-3 gap-3 mb-12">
-                  {screenshots.map((src, index) => (
-                    <div
-                      key={index}
-                      className="group relative aspect-video rounded-xl overflow-hidden bg-section-alt border border-border"
-                    >
-                      <Image
-                        src={src}
-                        alt={`${t.simurghTitle} Screenshot ${index + 1}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  ))}
-                </div>
 
                 <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
                   {t.simurghOriginalMusic}
