@@ -10,19 +10,23 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { getThemeInitScript } from "@/lib/themeInitScript";
 import { Analytics } from "@vercel/analytics/next";
 
+// preload: false avoids "preload was not used within a few seconds" (font still loads via CSS)
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "800"],
+  weight: ["300", "400", "600", "700"],
   display: "swap",
+  preload: false,
 });
 
 // Persian font - Vazirmatn is a modern, open-source Persian font
+// preload: false avoids "preload was not used within a few seconds" when initial view is English
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
   subsets: ["arabic"],
   weight: ["300", "400", "600", "700", "800"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

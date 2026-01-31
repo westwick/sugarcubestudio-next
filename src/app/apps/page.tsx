@@ -25,6 +25,7 @@ export default function AppsPage() {
               href="/apps/simurgh"
               badge={t.available}
               badgeColor="green"
+              priority
             />
             <AppCard
               title={t.nowruzTitle}

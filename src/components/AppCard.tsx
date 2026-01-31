@@ -12,6 +12,8 @@ interface AppCardProps {
   href: string;
   badge?: string;
   badgeColor?: "primary" | "green" | "blue";
+  /** Set for the first/hero card above the fold to improve LCP */
+  priority?: boolean;
 }
 
 export default function AppCard({
@@ -21,6 +23,7 @@ export default function AppCard({
   href,
   badge,
   badgeColor = "primary",
+  priority = false,
 }: AppCardProps) {
   const { t, isRTL } = useLanguage();
   
@@ -43,6 +46,8 @@ export default function AppCard({
             src={image}
             alt={`${title} App`}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority={priority}
             className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
           {/* Gradient overlay on hover */}

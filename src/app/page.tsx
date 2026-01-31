@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/animations";
+import LiteYouTubeEmbed from "@/components/LiteYouTubeEmbed";
 import { useLanguage } from "@/lib/i18n";
 
 export default function Home() {
@@ -187,13 +188,9 @@ export default function Home() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-card">
               {/* Video container with 16:9 aspect ratio */}
               <div className="relative aspect-video bg-gradient-to-br from-slate-900 to-slate-800">
-                {/* Placeholder for video - replace with actual YouTube embed or video element */}
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/NgRHjenOQoI?rel=0&modestbranding=1"
+                <LiteYouTubeEmbed
+                  videoId="NgRHjenOQoI"
                   title={t.videoTitle}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
                 />
               </div>
               

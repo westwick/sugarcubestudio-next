@@ -4,6 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/animations";
+import LiteYouTubeEmbed from "@/components/LiteYouTubeEmbed";
 import { useLanguage } from "@/lib/i18n";
 
 const SIMURGH_ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sugarcubestudio.simurgh";
@@ -57,6 +58,7 @@ export default function SimurghPage() {
                         src={src}
                         alt={`${t.simurghTitle} Screenshot ${index + 1}`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -160,12 +162,9 @@ export default function SimurghPage() {
             </FadeIn>
             <ScaleIn>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-card aspect-video">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${SIMURGH_TRAILER_VIDEO_ID}?rel=0&modestbranding=1`}
+                <LiteYouTubeEmbed
+                  videoId={SIMURGH_TRAILER_VIDEO_ID}
                   title={t.videoTitle}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
                 />
               </div>
             </ScaleIn>

@@ -65,6 +65,7 @@ export default function Header() {
                 src="/images/logo.png"
                 alt="Sugar Cube Studio"
                 fill
+                sizes="40px"
                 className="object-contain"
               />
             </motion.div>

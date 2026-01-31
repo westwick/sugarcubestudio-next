@@ -66,6 +66,7 @@ export default function Footer() {
                   src="/images/logo.png"
                   alt={t.siteName}
                   fill
+                  sizes="40px"
                   className="object-contain"
                 />
               </div>
