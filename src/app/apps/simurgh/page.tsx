@@ -6,11 +6,9 @@ import { motion } from "framer-motion";
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useLanguage } from "@/lib/i18n";
 
-const SIMURGH_IOS_URL = "#"; /* TBD */
 const SIMURGH_ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sugarcubestudio.simurgh";
 const SIMURGH_SPOTIFY_URL = "https://open.spotify.com/album/0lqK1qCPOO4BhFVLGH03bD?si=k586zVslTCS1JqA3T4Jupw";
-/* TODO: Replace with actual trailer YouTube video ID */
-const SIMURGH_TRAILER_VIDEO_ID = "dQw4w9WgXcQ";
+const SIMURGH_TRAILER_VIDEO_ID = "NgRHjenOQoI";
 
 const screenshots = [
   "/images/simurgh/2024-10-16-08h22m32s112.png",
@@ -114,14 +112,7 @@ export default function SimurghPage() {
                     {t.availableOnIosAndroid}
                   </p>
                   <div className="space-y-3">
-                    <motion.a
-                      href={SIMURGH_IOS_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
+                    <div className="relative block opacity-50 pointer-events-none">
                       <Image
                         src="/images/ios-badge.png"
                         alt="Download on the App Store"
@@ -129,7 +120,10 @@ export default function SimurghPage() {
                         height={60}
                         className="w-full h-auto"
                       />
-                    </motion.a>
+                      <span className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 text-white text-sm font-semibold">
+                        {t.comingSoon}
+                      </span>
+                    </div>
                     <motion.a
                       href={SIMURGH_ANDROID_URL}
                       target="_blank"

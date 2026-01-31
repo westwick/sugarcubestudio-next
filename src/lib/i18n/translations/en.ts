@@ -34,7 +34,7 @@ const en: Translations = {
   featureBeatEmUp: "Beat-em-up Action",
   featurePersianSoundtrack: "Persian Soundtrack",
   featureEpicStory: "Epic Story",
-  featureMobileDesktop: "Mobile & Desktop",
+  featureMobileDesktop: "iOS & Android",
   joinBeta: "Join Beta",
   
   // Newsletter Section

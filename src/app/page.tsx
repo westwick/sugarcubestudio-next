@@ -189,7 +189,7 @@ export default function Home() {
                 {/* Placeholder for video - replace with actual YouTube embed or video element */}
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                  src="https://www.youtube.com/embed/NgRHjenOQoI?rel=0&modestbranding=1"
                   title={t.videoTitle}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

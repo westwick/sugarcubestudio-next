@@ -34,7 +34,7 @@ const fa: Translations = {
   featureBeatEmUp: "اکشن مبارزه‌ای",
   featurePersianSoundtrack: "موسیقی اصیل ایرانی",
   featureEpicStory: "داستان حماسی",
-  featureMobileDesktop: "موبایل و کامپیوتر",
+  featureMobileDesktop: "iOS و اندروید",
   joinBeta: "تستر بتا شوید",
   
   // Newsletter Section
