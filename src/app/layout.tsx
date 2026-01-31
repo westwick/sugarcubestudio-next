@@ -8,6 +8,7 @@ import { ColorThemeProvider } from "@/components/ColorThemeProvider";
 import { LanguageProvider } from "@/lib/i18n";
 import ScrollToTop from "@/components/ScrollToTop";
 import { getThemeInitScript } from "@/lib/themeInitScript";
+import { Analytics } from "@vercel/analytics/next";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -54,6 +55,7 @@ export default function RootLayout({
             </LanguageProvider>
           </ColorThemeProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
