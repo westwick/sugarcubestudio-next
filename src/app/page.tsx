@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import NewsCard from "@/components/NewsCard";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -237,31 +238,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <FadeIn className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {t.newsletterTitle}
-            </h2>
-            <p className="text-lg text-muted mb-8">
-              {t.newsletterDescription}
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder={t.newsletterPlaceholder}
-                className="flex-grow px-5 py-4 rounded-xl bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-foreground placeholder:text-muted-foreground"
-                required
-              />
-              <Button type="submit">{t.subscribe}</Button>
-            </form>
-            <p className="text-xs text-muted-foreground mt-4">
-              {t.newsletterPrivacy}
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <NewsletterSignup />
 
       {/* Apps Preview */}
       <section className="py-24 md:py-32 bg-section-alt">
