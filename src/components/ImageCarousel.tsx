@@ -36,7 +36,10 @@ export default function ImageCarousel({
         : "aspect-video";
 
   return (
-    <div className={`relative flex items-center gap-3 flex-row ${className}`}>
+    <div
+      className={`relative flex items-center gap-3 flex-row ${className}`}
+      dir="ltr"
+    >
       <button
         type="button"
         onClick={goPrev}
@@ -46,28 +49,31 @@ export default function ImageCarousel({
         <ChevronLeft className="w-6 h-6" aria-hidden />
       </button>
 
-      <div className="relative flex-1 min-w-0 overflow-hidden rounded-xl border border-border bg-section-alt">
+      <div
+        className="relative flex-1 min-w-0 overflow-hidden rounded-xl border border-border bg-section-alt"
+        dir="ltr"
+      >
         <div
           className="flex flex-row transition-transform duration-300 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((src, index) => (
-            <div
-              key={index}
-              className="relative flex-shrink-0 w-full"
-              style={{ minWidth: "100%" }}
-            >
-              <div className={`relative w-full h-full ${aspectClass}`}>
-                <Image
-                  src={src}
-                  alt={`${altPrefix} ${index + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="object-cover"
-                />
-              </div>
+        {images.map((src, index) => (
+          <div
+            key={index}
+            className="relative flex-shrink-0 w-full"
+            style={{ minWidth: "100%" }}
+          >
+            <div className={`relative w-full h-full ${aspectClass}`}>
+              <Image
+                src={src}
+                alt={`${altPrefix} ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="object-cover"
+              />
             </div>
-          ))}
+          </div>
+        ))}
         </div>
       </div>
 

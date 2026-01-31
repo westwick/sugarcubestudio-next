@@ -27,9 +27,9 @@ const en: Translations = {
   
   // Video Section
   videoExclusivePreview: "Exclusive Preview",
-  videoWatchTeaser: "Watch the Teaser",
+  videoWatchTeaser: "Watch the Trailer",
   videoDescription: "Get your first look at Simurgh — an epic journey of courage, rebellion, and the fight for freedom.",
-  videoTitle: "Simurgh — Official Teaser Trailer",
+  videoTitle: "Simurgh — Official Trailer",
   videoSubtitle: "Experience the fight for freedom",
   featureBeatEmUp: "Beat-em-up Action",
   featurePersianSoundtrack: "Persian Soundtrack",

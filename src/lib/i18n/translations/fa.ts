@@ -27,9 +27,9 @@ const fa: Translations = {
   
   // Video Section
   videoExclusivePreview: "پیش‌نمایش اختصاصی",
-  videoWatchTeaser: "تیزر را تماشا کنید",
+  videoWatchTeaser: "تریلر را تماشا کنید",
   videoDescription: "اولین نگاه خود به سیمرغ را ببینید — سفری حماسی از شجاعت، شورش و مبارزه برای آزادی.",
-  videoTitle: "سیمرغ — تیزر رسمی",
+  videoTitle: "سیمرغ — تریلر رسمی",
   videoSubtitle: "مبارزه برای آزادی را تجربه کنید",
   featureBeatEmUp: "اکشن مبارزه‌ای",
   featurePersianSoundtrack: "موسیقی اصیل ایرانی",
