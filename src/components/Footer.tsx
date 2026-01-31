@@ -153,16 +153,16 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
               {t.footerStayUpdated}
             </h3>
-            <p className="text-sm text-muted mb-4">
-              {t.footerStayUpdatedDesc}
-            </p>
+            <p className="text-sm text-muted mb-4">{t.footerStayUpdatedDesc}</p>
             <Link
               href="/mailing-list"
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 ${
+                isRTL ? "flex-row-reverse" : ""
+              }`}
             >
               {t.subscribe}
               <svg
-                className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -180,13 +180,34 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted">
+          <div className="flex flex-col md:grid md:grid-cols-3 items-center gap-4 md:gap-0">
+            <p className="text-sm text-muted order-1 md:justify-self-start">
               &copy; {currentYear} {t.footerCopyright}
             </p>
-            
-            {/* Theme control – combined color picker + light/dark */}
-            <ThemeControl />
+
+            {/* Infinite Robots – centered on desktop, bottom on mobile */}
+            <a
+              href="https://infinite-robots.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="order-3 md:order-2 flex flex-col items-center gap-1 hover:opacity-80 transition-opacity md:justify-self-center"
+              aria-label="Developed by Infinite Robots"
+            >
+              <Image
+                src="/infinite-robots-small.png"
+                alt="Infinite Robots"
+                width={32}
+                height={34}
+                className="object-contain w-8 h-auto"
+              />
+              <span className="text-[10px] text-muted/80 hover:opacity-80 transition-opacity">
+                Developed by IR
+              </span>
+            </a>
+
+            <div className="order-2 md:order-3 md:justify-self-end">
+              <ThemeControl />
+            </div>
           </div>
         </div>
       </div>
