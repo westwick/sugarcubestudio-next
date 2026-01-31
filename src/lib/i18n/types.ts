@@ -9,6 +9,8 @@ export interface Translations {
   comingSoon: string;
   available: string;
   learnMore: string;
+  learnMoreSimurgh: string;
+  learnMoreNowruz: string;
   subscribe: string;
   
   // Navigation

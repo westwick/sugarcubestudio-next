@@ -7,6 +7,8 @@ const en: Translations = {
   comingSoon: "Coming Soon",
   available: "Available Now",
   learnMore: "Learn more",
+  learnMoreSimurgh: "Learn more about Simurgh",
+  learnMoreNowruz: "Learn more about Nowruz",
   subscribe: "Subscribe",
   
   // Navigation

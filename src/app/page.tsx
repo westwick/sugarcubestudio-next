@@ -50,8 +50,10 @@ export default function Home() {
               alt=""
               fill
               className={`object-contain ${isRTL ? "object-left -scale-x-100" : "object-right"}`}
-              sizes="78vw"
+              sizes="(min-width: 1024px) 0px, 78vw"
               priority
+              fetchPriority="high"
+              quality={65}
             />
           </motion.div>
         </div>
@@ -123,8 +125,10 @@ export default function Home() {
               alt=""
               fill
               className={`object-contain ${isRTL ? "object-left -scale-x-100" : "object-right"}`}
-              sizes="50vw"
+              sizes="(max-width: 1023px) 0px, min(50vw, 400px)"
               priority
+              fetchPriority="high"
+              quality={65}
             />
           </motion.div>
         </div>
@@ -203,7 +207,7 @@ export default function Home() {
                   </div>
                   <div className="flex gap-3">
                     <Button href="/apps/simurgh" size="sm">
-                      {t.learnMore}
+                      {t.learnMoreSimurgh}
                     </Button>
                   </div>
                 </div>
@@ -275,7 +279,7 @@ export default function Home() {
                     href="/apps/simurgh"
                     className={`inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
-                    {t.learnMore}
+                    {t.learnMoreSimurgh}
                     <svg className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -306,7 +310,7 @@ export default function Home() {
                     href="/apps/nowruz"
                     className={`inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
-                    {t.learnMore}
+                    {t.learnMoreNowruz}
                     <svg className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>

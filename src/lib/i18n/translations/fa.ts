@@ -7,6 +7,8 @@ const fa: Translations = {
   comingSoon: "به زودی",
   available: "در دسترس",
   learnMore: "بیشتر بدانید",
+  learnMoreSimurgh: "بیشتر درباره سیمرغ",
+  learnMoreNowruz: "بیشتر درباره نوروز",
   subscribe: "اشتراک",
   
   // Navigation

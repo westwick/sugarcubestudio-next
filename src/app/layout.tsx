@@ -47,6 +47,8 @@ export default function RootLayout({
       <head>
         {/* Prevent flash of wrong theme and language direction */}
         <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
+        {/* Preconnect to YouTube image CDN for faster thumbnail load (video section) */}
+        <link rel="preconnect" href="https://img.youtube.com" />
       </head>
       <body className="font-sans antialiased min-h-screen flex flex-col bg-background text-foreground">
         <ThemeProvider defaultTheme="dark">

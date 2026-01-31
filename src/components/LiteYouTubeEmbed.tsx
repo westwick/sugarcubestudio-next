@@ -21,7 +21,8 @@ export default function LiteYouTubeEmbed({
 }) {
   const [loaded, setLoaded] = useState(false);
 
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  // mqdefault (320x180) is smaller than hqdefault (480x270); display is ~207x155 so 320w is sufficient
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
   const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`;
 
   // Minimal allow list for when iframe loads; avoids "Feature Policy: Skipping unsupported feature name" noise
@@ -49,6 +50,8 @@ export default function LiteYouTubeEmbed({
       <img
         src={thumbnailUrl}
         alt=""
+        width={320}
+        height={180}
         className="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
         decoding="async"
