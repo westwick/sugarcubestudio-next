@@ -177,6 +177,9 @@ const en: Translations = {
   mailingPageDescription: "Be the first to know about our latest updates, game releases, and exclusive content.",
   mailingIntro: "No spam, unsubscribe anytime. Get exclusive updates on our games and apps.",
   mailingDisclaimer: "By subscribing, you agree to receive emails from Sugar Cube Studio. You can unsubscribe at any time.",
+  mailingSending: "Subscribing…",
+  mailingSuccess: "Thank you for subscribing!",
+  mailingError: "Something went wrong. Please try again later.",
   
   // Privacy Policy Page
   privacyPageSubtitle: "Legal",

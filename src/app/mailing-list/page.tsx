@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import { FadeIn } from "@/components/animations";
@@ -7,6 +8,39 @@ import { useLanguage } from "@/lib/i18n";
 
 export default function MailingListPage() {
   const { t } = useLanguage();
+  const [result, setResult] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const apiKey = process.env.NEXT_PUBLIC_MAILERLITE_API_KEY;
+    if (!apiKey) {
+      setResult("error");
+      return;
+    }
+    setResult("sending");
+    const form = event.currentTarget;
+    const email = new FormData(form).get("email") as string;
+
+    try {
+      const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Subscription failed");
+      }
+      setResult("success");
+      form.reset();
+    } catch {
+      setResult("error");
+    }
+  };
 
   return (
     <>
@@ -29,7 +63,7 @@ export default function MailingListPage() {
               {t.mailingIntro}
             </p>
             
-            <form className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-4">
               <div>
                 <label htmlFor="email" className="sr-only">{t.contactEmail}</label>
                 <input
@@ -38,13 +72,25 @@ export default function MailingListPage() {
                   name="email"
                   placeholder={t.newsletterPlaceholder}
                   required
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-center text-foreground placeholder:text-muted-foreground"
+                  disabled={result === "sending"}
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-center text-foreground placeholder:text-muted-foreground disabled:opacity-70"
                 />
               </div>
               
-              <Button type="submit" className="w-full">
-                {t.subscribe}
+              <Button type="submit" className="w-full" disabled={result === "sending"}>
+                {result === "sending" ? t.mailingSending : t.subscribe}
               </Button>
+              {(result === "success" || result === "error") && (
+                <p
+                  className={`text-center text-sm ${
+                    result === "success"
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-red-600 dark:text-red-400"
+                  }`}
+                >
+                  {result === "success" ? t.mailingSuccess : t.mailingError}
+                </p>
+              )}
             </form>
             
             <p className="text-xs text-muted-foreground mt-6">

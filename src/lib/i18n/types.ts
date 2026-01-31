@@ -179,7 +179,10 @@ export interface Translations {
   mailingPageDescription: string;
   mailingIntro: string;
   mailingDisclaimer: string;
-  
+  mailingSending: string;
+  mailingSuccess: string;
+  mailingError: string;
+
   // Privacy Policy Page
   privacyPageSubtitle: string;
   privacyPageTitle: string;
