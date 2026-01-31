@@ -1,12 +1,37 @@
 "use client";
 
+import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import { FadeIn } from "@/components/animations";
 import { useLanguage } from "@/lib/i18n";
 
+const WEB3FORMS_ACCESS_KEY = "cd7bf341-488e-443d-933d-a6625f63ae63";
+
 export default function ContactPage() {
   const { t } = useLanguage();
+  const [result, setResult] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setResult("sending");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setResult("success");
+      form.reset();
+    } else {
+      setResult("error");
+    }
+  };
 
   return (
     <>
@@ -24,7 +49,7 @@ export default function ContactPage() {
                 {t.contactFormIntro}
               </p>
               
-              <form className="space-y-6">
+              <form onSubmit={onSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                     {t.contactName}
@@ -64,9 +89,20 @@ export default function ContactPage() {
                   />
                 </div>
                 
-                <Button type="submit" className="w-full">
-                  {t.contactSend}
+                <Button type="submit" className="w-full" disabled={result === "sending"}>
+                  {result === "sending" ? t.contactSending : t.contactSend}
                 </Button>
+                {(result === "success" || result === "error") && (
+                  <p
+                    className={`text-center text-sm ${
+                      result === "success"
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-red-600 dark:text-red-400"
+                    }`}
+                  >
+                    {result === "success" ? t.contactSuccess : t.contactError}
+                  </p>
+                )}
               </form>
             </FadeIn>
           </div>

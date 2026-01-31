@@ -151,7 +151,10 @@ export interface Translations {
   contactEmail: string;
   contactMessage: string;
   contactSend: string;
-  
+  contactSending: string;
+  contactSuccess: string;
+  contactError: string;
+
   // Game Tester Page
   testerPageSubtitle: string;
   testerPageTitle: string;

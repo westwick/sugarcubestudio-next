@@ -149,7 +149,10 @@ const en: Translations = {
   contactEmail: "Email",
   contactMessage: "Message",
   contactSend: "Send Message",
-  
+  contactSending: "Sending…",
+  contactSuccess: "Message sent successfully. We'll get back to you soon.",
+  contactError: "Something went wrong. Please try again.",
+
   // Game Tester Page
   testerPageSubtitle: "Beta Testing",
   testerPageTitle: "Join the Simurgh Movement",

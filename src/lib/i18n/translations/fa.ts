@@ -149,7 +149,10 @@ const fa: Translations = {
   contactEmail: "ایمیل",
   contactMessage: "پیام",
   contactSend: "ارسال پیام",
-  
+  contactSending: "در حال ارسال…",
+  contactSuccess: "پیام با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.",
+  contactError: "مشکلی پیش آمد. لطفاً دوباره تلاش کنید.",
+
   // Game Tester Page
   testerPageSubtitle: "تست بتا",
   testerPageTitle: "به جنبش سیمرغ بپیوندید",
