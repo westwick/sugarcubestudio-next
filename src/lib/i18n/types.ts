@@ -12,23 +12,23 @@ export interface Translations {
   learnMoreSimurgh: string;
   learnMoreNowruz: string;
   subscribe: string;
-  
+
   // Navigation
   navHome: string;
   navApps: string;
   navContact: string;
-  
+
   // Hero Section
   heroExperience: string;
   heroSimurgh: string;
   heroDescription: string;
   heroDiscoverMore: string;
   heroJoinBeta: string;
-  
+
   // Tagline Section
   taglineText: string;
   taglineHighlight: string;
-  
+
   // Video Section
   videoExclusivePreview: string;
   videoWatchTeaser: string;
@@ -40,29 +40,29 @@ export interface Translations {
   featureEpicStory: string;
   featureMobileDesktop: string;
   joinBeta: string;
-  
+
   // Newsletter Section
   newsletterTitle: string;
   newsletterDescription: string;
   newsletterPlaceholder: string;
   newsletterPrivacy: string;
-  
+
   // Apps Preview Section
   appsTitle: string;
   appsSubtitle: string;
   appsDescription: string;
   viewAllApps: string;
-  
+
   // Simurgh Card
   simurghTitle: string;
   simurghShortDesc: string;
   simurghLongDesc: string;
-  
+
   // Nowruz Card
   nowruzTitle: string;
   nowruzShortDesc: string;
   nowruzLongDesc: string;
-  
+
   // News Section
   newsTitle: string;
   newsSubtitle: string;
@@ -74,14 +74,14 @@ export interface Translations {
   newsBetaText: string;
   availableNow: string;
   joinUs: string;
-  
+
   // CTA Section
   ctaTitle: string;
   ctaHighlight: string;
   ctaDescription: string;
   ctaNewsletter: string;
   ctaContact: string;
-  
+
   // Footer
   footerDescription: string;
   footerQuickLinks: string;
@@ -94,25 +94,29 @@ export interface Translations {
   linkNewsletter: string;
   linkContact: string;
   linkPrivacyPolicy: string;
-  
+
   // Theme Toggle
   themeLight: string;
   themeDark: string;
   themeSystem: string;
-  
+
   // Language Toggle
   languageEnglish: string;
   languagePersian: string;
-  
+
   // Apps Page
   appsPageSubtitle: string;
   appsPageTitle: string;
   appsPageDescription: string;
-  
+
   // Simurgh Page
   simurghPageSubtitle: string;
   simurghPageTitle: string;
   simurghPageDescription: string;
+  simurghHeadline: string;
+  simurghSubline: string;
+  simurghSocialProof: string;
+  simurghSocialProof2: string;
   simurghAboutText: string;
   simurghScreenshots: string;
   simurghOriginalMusic: string;
@@ -128,11 +132,15 @@ export interface Translations {
   simurghNotifyText: string;
   getNotified: string;
   availableForIosAndroid: string;
-  
+
   // Nowruz Page
   nowruzPageSubtitle: string;
   nowruzPageTitle: string;
   nowruzPageDescription: string;
+  nowruzHeadline: string;
+  nowruzSubline: string;
+  nowruzSocialProof: string;
+  nowruzSocialProof2: string;
   nowruzAboutText: string;
   nowruzScreenshots: string;
   nowruzFeatures: string;
@@ -143,7 +151,7 @@ export interface Translations {
   nowruzFeature5: string;
   downloadNow: string;
   availableOnIosAndroid: string;
-  
+
   // Contact Page
   contactPageSubtitle: string;
   contactPageTitle: string;
@@ -174,7 +182,7 @@ export interface Translations {
   testerCardDescription: string;
   signUpNow: string;
   testerTime: string;
-  
+
   // Mailing List Page
   mailingPageSubtitle: string;
   mailingPageTitle: string;

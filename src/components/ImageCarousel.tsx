@@ -37,54 +37,73 @@ export default function ImageCarousel({
 
   return (
     <div
-      className={`relative flex items-center gap-3 flex-row ${className}`}
+      className={`relative ${className}`}
       dir="ltr"
     >
-      <button
-        type="button"
-        onClick={goPrev}
-        aria-label="Previous image"
-        className="flex-shrink-0 rounded-full p-2 text-foreground bg-card border border-border hover:bg-section-alt focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-      >
-        <ChevronLeft className="w-6 h-6" aria-hidden />
-      </button>
-
+      {/* Image container - full width */}
       <div
-        className="relative flex-1 min-w-0 overflow-hidden rounded-xl border border-border bg-section-alt"
+        className="relative w-full overflow-hidden rounded-xl border border-border bg-section-alt"
         dir="ltr"
       >
         <div
           className="flex flex-row transition-transform duration-300 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="relative flex-shrink-0 w-full"
-            style={{ minWidth: "100%" }}
-          >
-            <div className={`relative w-full h-full ${aspectClass}`}>
-              <Image
-                src={src}
-                alt={`${altPrefix} ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 60vw"
-                className="object-cover"
-              />
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="relative flex-shrink-0 w-full"
+              style={{ minWidth: "100%" }}
+            >
+              <div className={`relative w-full h-full ${aspectClass}`}>
+                <Image
+                  src={src}
+                  alt={`${altPrefix} ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Navigation buttons - overlaying the image */}
+        <button
+          type="button"
+          onClick={goPrev}
+          aria-label="Previous image"
+          className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-white bg-black/50 backdrop-blur-sm hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+        >
+          <ChevronLeft className="w-5 h-5" aria-hidden />
+        </button>
+
+        <button
+          type="button"
+          onClick={goNext}
+          aria-label="Next image"
+          className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-white bg-black/50 backdrop-blur-sm hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+        >
+          <ChevronRight className="w-5 h-5" aria-hidden />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to image ${index + 1}`}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentIndex
+                  ? "bg-white"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+            />
+          ))}
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={goNext}
-        aria-label="Next image"
-        className="flex-shrink-0 rounded-full p-2 text-foreground bg-card border border-border hover:bg-section-alt focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-      >
-        <ChevronRight className="w-6 h-6" aria-hidden />
-      </button>
     </div>
   );
 }
