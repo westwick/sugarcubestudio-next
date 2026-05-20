@@ -14,6 +14,8 @@ import ImageCarousel from "@/components/ImageCarousel";
 import LiteYouTubeEmbed from "@/components/LiteYouTubeEmbed";
 import { useLanguage } from "@/lib/i18n";
 
+const SIMURGH_IOS_URL =
+  "https://apps.apple.com/us/app/the-simurgh/id6749210423";
 const SIMURGH_ANDROID_URL =
   "https://play.google.com/store/apps/details?id=com.sugarcubestudio.simurgh";
 const SIMURGH_SPOTIFY_URL =
@@ -81,7 +83,14 @@ export default function SimurghPage() {
                 </span>
                 <p className="text-muted mb-6">{t.availableOnIosAndroid}</p>
                 <div className="space-y-3">
-                  <div className="relative block opacity-50 pointer-events-none">
+                  <motion.a
+                    href={SIMURGH_IOS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <Image
                       src="/images/ios-badge.png"
                       alt="Download on the App Store"
@@ -89,10 +98,7 @@ export default function SimurghPage() {
                       height={60}
                       className="w-full max-w-[200px] mx-auto h-auto"
                     />
-                    <span className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 text-white text-sm font-semibold">
-                      {t.comingSoon}
-                    </span>
-                  </div>
+                  </motion.a>
                   <motion.a
                     href={SIMURGH_ANDROID_URL}
                     target="_blank"
